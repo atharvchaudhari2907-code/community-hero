@@ -12,9 +12,14 @@ app = FastAPI(
     version="0.1.0",
 )
 
+origins = [settings.FRONTEND_ORIGIN, "http://localhost:3000"]
+if "," in settings.FRONTEND_ORIGIN:
+    origins = [o.strip() for o in settings.FRONTEND_ORIGIN.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_ORIGIN, "http://localhost:3000"],
+    allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app|https://.*\.up\.railway\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -24,6 +29,11 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     init_db()
+    try:
+        from app.utils.seed import seed
+        seed()
+    except Exception as e:
+        print(f"Error seeding database on startup: {e}")
 
 
 app.include_router(auth.router)
