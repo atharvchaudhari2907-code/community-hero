@@ -1,3 +1,4 @@
+import os
 from sqlmodel import create_engine, Session, SQLModel
 from app.config import settings
 
@@ -8,6 +9,10 @@ engine = create_engine(
 
 
 def init_db():
+    # Ensure parent directory exists for SQLite database file
+    db_dir = os.path.dirname(settings.SQLITE_PATH)
+    if db_dir:
+        os.makedirs(db_dir, exist_ok=True)
     SQLModel.metadata.create_all(engine)
 
 
