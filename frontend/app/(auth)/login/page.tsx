@@ -7,7 +7,6 @@ import { loginSchema, type LoginInput } from '@/lib/validators'
 import { useAuth } from '@/hooks/useAuth'
 import { Input, FieldWrapper } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
-import { ShieldCheck } from 'lucide-react'
 
 export default function LoginPage() {
   const { login, isLoading } = useAuth()
@@ -57,15 +56,7 @@ export default function LoginPage() {
           </Button>
         </form>
 
-        <div className="mt-4 rounded border border-border bg-white p-3 text-xs text-slate-500 flex gap-2">
-          <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-          <div>
-            Demo logins — citizen: <span className="font-medium text-ink">citizen@demo.in</span>,
-            worker: <span className="font-medium text-ink">ramesh.worker@demo.in</span>,
-            admin: <span className="font-medium text-ink">admin@demo.in</span> — password{' '}
-            <span className="font-medium text-ink">Password123</span>
-          </div>
-        </div>
+
 
         <p className="mt-6 text-center text-sm text-slate-500">
           New here?{' '}
