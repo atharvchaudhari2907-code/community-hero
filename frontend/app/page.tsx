@@ -57,11 +57,7 @@ export default function LandingPage() {
         <div className="absolute bottom-10 left-[8%] h-12 w-12 rounded-full border-2 border-accent/20 animate-floatSlow -z-10" style={{ animationDelay: '0.6s' }} />
 
         <div className="max-w-6xl mx-auto px-6 pt-14 pb-10">
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-accent/30 px-4 py-1.5 text-xs font-medium text-accent shadow-micro">
-              🏆 HACKATHON 2026 — COMMUNITY IMPACT AWARD NOMINEE
-            </span>
-          </div>
+
 
           <h1 className="font-display text-4xl md:text-6xl font-extrabold text-navy text-center leading-[1.05] max-w-3xl mx-auto">
             {HEADLINE_WORDS.map((word, i) => (
