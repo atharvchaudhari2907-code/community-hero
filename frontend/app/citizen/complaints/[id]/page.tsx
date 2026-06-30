@@ -67,6 +67,7 @@ export default function ComplaintDetailPage() {
             <p className="text-sm text-slate-600 mt-2">{complaint.description}</p>
 
             {complaint.media_urls.length > 0 && (
+              /* eslint-disable-next-line @next/next/no-img-element */
               <img
                 src={`${process.env.NEXT_PUBLIC_API_BASE_URL?.replace('/v1', '') || 'http://localhost:8000'}${complaint.media_urls[0]}`}
                 alt="Reported issue"

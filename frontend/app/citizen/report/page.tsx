@@ -120,7 +120,7 @@ export default function ReportIssuePage() {
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="font-display text-2xl font-semibold text-ink mb-1">Report an issue</h1>
         <p className="text-sm text-slate-500 mb-6">
-          Add a photo if you can, tell us what's wrong, and we'll route it to the right team.
+          {"Add a photo if you can, tell us what's wrong, and we'll route it to the right team."}
         </p>
 
         {step === 'upload' && (
@@ -163,6 +163,7 @@ export default function ReportIssuePage() {
             <Card className="p-5 flex flex-col gap-4">
               {imagePreview ? (
                 <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={imagePreview} alt="Uploaded issue" className="w-full h-44 object-cover rounded" />
                   <button
                     type="button"
@@ -273,7 +274,7 @@ export default function ReportIssuePage() {
               <h2 className="font-display text-xl font-semibold text-ink">Complaint submitted!</h2>
               <p className="text-sm text-slate-500 mt-1">
                 {submitted.xp_awarded && `+${submitted.xp_awarded.xp_earned} XP earned. `}
-                We've routed it to {submitted.department}
+                {"We've routed it to "}{submitted.department}
                 {submitted.assigned_worker_name && ` and assigned ${submitted.assigned_worker_name}`}.
               </p>
             </div>

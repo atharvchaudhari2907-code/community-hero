@@ -37,7 +37,7 @@ export default function LiveMapPage() {
     refetchInterval: 10000,
   })
 
-  const allComplaints = data?.items ?? []
+  const allComplaints = useMemo(() => data?.items ?? [], [data?.items])
 
   const filtered = useMemo(() => {
     let list = allComplaints

@@ -1,6 +1,6 @@
 'use client'
 import { useQuery } from '@tanstack/react-query'
-import { Trophy, Award, Medal, ArrowLeft, Star, Flame } from 'lucide-react'
+import { Trophy, Award, Medal, ArrowLeft, Star } from 'lucide-react'
 import Link from 'next/link'
 import { useRequireAuth } from '@/hooks/useAuth'
 import { api } from '@/lib/api'
