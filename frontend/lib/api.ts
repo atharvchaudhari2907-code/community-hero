@@ -3,6 +3,18 @@ import axios from 'axios'
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/v1'
 
+if (typeof window !== 'undefined') {
+  const isLocalhostAPI = API_BASE_URL.includes('localhost') || API_BASE_URL.includes('127.0.0.1')
+  const isLocalhostFrontend = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.') || window.location.hostname.startsWith('10.')
+  if (isLocalhostAPI && !isLocalhostFrontend) {
+    console.warn(
+      `[Community Hero] Warning: The frontend is running on a remote host (${window.location.hostname}), but API_BASE_URL is pointing to localhost (${API_BASE_URL}). ` +
+      `This usually means NEXT_PUBLIC_API_BASE_URL was not set during the frontend build process. ` +
+      `Please configure NEXT_PUBLIC_API_BASE_URL in your deployment platform and trigger a rebuild.`
+    )
+  }
+}
+
 export const api = axios.create({
   baseURL: API_BASE_URL,
 })
